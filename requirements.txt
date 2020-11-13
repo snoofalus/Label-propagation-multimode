@@ -1,0 +1,71 @@
+
+###DATA
+
+sentintel 1 sentinel 2 sea ice dataset sea ice classes
+
+#----------------------------------------------------------------------------------------------------
+
+python 3.5?
+
+####OLD ENV
+numpy 
+matplotlib 
+pandas
+torch>=1.0.0
+torchvision>=0.2.2
+tqdm
+scipy
+
+conda install numpy
+conda install -c conda-forge matplotlib
+conda install pandas
+conda install -c conda-forge tqdm
+conda install -c anaconda scipy
+
+conda install faiss-gpu cudatoolkit=10.0 -c pytorch 
+conda install pytorch==0.4.1 torchvision==0.2.1 cuda90 -c pytorch
+
+###NEW ENV
+conda install numpy
+conda install -c conda-forge matplotlib
+conda install pandas
+conda install -c conda-forge tqdm
+conda install -c anaconda scipy
+
+conda install faiss-gpu cudatoolkit=10.0 -c pytorch 
+conda install pytorch torchvision torchaudio cudatoolkit=10.0 -c pytorch
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+TRY:
+conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1 -c pytorch
+conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0 -c pytorch
+
+conda install pytorch=0.4.1 cuda92 -c pytorch
+
+conda install pytorch==0.4.1 torchvision==0.2.1 cuda90 -c pytorch # Tried this in LP-old env
+
+
+
+#----------------------------------------------------------------------------------------------------
+
+
+
+###
+Running
+###
+
+python train_stage1.py --exclude-unlabeled=True --num-labeled=$NOLABELS --gpu-id=$GPUID --label-split=$SPLITID --isMT=False --isL2=True --dataset=$DATASET
+python train_stage1.py --exclude-unlabeled=True --num-labeled=1000 --gpu-id=0 --label-split=10 --isMT=False --isL2=True --dataset=cifar10
+
+
+python train_stage2.py --labeled-batch-size=$LABELED_IN_BATCH --num-labeled=$NOLABELS --gpu-id=$GPUID --label-split=$SPLITID --isMT=False --isL2=True --dataset=$DATASET
+
+first working:
+python train_stage2.py --labeled-batch-size=25 --num-labeled=1000 --gpu-id=0 --label-split=10 --isMT=False --isL2=True --dataset=cifar10
+
+
+sentintel 1 sentinel 2 sea ice dataset sea ice classes
+
